@@ -90,4 +90,7 @@ dependencies {
     implementation("androidx.room:room-runtime:2.5.0")
     kapt("androidx.room:room-compiler:2.5.0")
 
+    // Chucker
+    implementation("com.github.chuckerteam.chucker:library:4.0.0")
+
 }

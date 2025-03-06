@@ -2,6 +2,7 @@ package com.wisnua.starterproject.di.modules
 
 import android.content.Context
 import androidx.room.Room
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.wisnua.starterproject.data.local.AppDatabase
 import com.wisnua.starterproject.data.local.dao.UserDao
 import com.wisnua.starterproject.data.remote.ApiService
@@ -27,7 +28,7 @@ object AppModule {
     private const val API_KEY = "Bearer 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"
 
     @Provides
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(@ApplicationContext context: Context): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
@@ -47,12 +48,15 @@ object AppModule {
             chain.proceed(request)
         }
 
+        val chuckerInterceptor = ChuckerInterceptor.Builder(context).build()
+
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .addInterceptor(apiKeyInterceptor)
-            // Add any other interceptors or configurations as needed
+            .addInterceptor(chuckerInterceptor)
             .build()
     }
+
 
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
