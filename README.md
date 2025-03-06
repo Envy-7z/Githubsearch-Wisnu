@@ -47,22 +47,6 @@ This project is a **GitHub User Search App** that enables users to search for Gi
 7. **Git History**
     - Maintains a **clean and descriptive Git history**.
 
-### **Nice to Have**
-1. **Unit Testing & UI Testing**
-    - Implements unit tests and UI tests using **JUnit, Espresso, and Mockito**.
-
-2. **Debugging Support**
-    - Integrates **Chucker** for API request/response debugging.
-
-3. **Dependency Versioning**
-    - Uses **Version Catalog** for managing dependencies.
-
-4. **Background Processing**
-    - Implements **Work Manager** for handling background tasks.
-
-5. **JSON Parsing**
-    - Uses **Moshi** for JSON parsing.
-
 ## Installation & Setup
 ### **Prerequisites**
 - Android Studio (latest version recommended)
@@ -73,7 +57,6 @@ This project is a **GitHub User Search App** that enables users to search for Gi
    ```sh
    git clone https://github.com/Envy-7z/Githubsearch-Wisnu
    ```
-
 2. **Open the project in Android Studio**.
 3. **Build and Run the app**:
     - Connect a physical device or use an emulator.
