@@ -1,56 +1,93 @@
+# HCS-IDN Android Assessment Project: GitHub User Search App
 
----
+## Project Overview
+This project is a **GitHub User Search App** that enables users to search for GitHub users, view search results in a list, and see detailed information about a selected user. The app utilizes the **GitHub API** for fetching user data and **Room** for local data persistence. The project follows **Clean Architecture** principles, ensuring modular, maintainable, and scalable code.
 
-# StarterProject
-
-This project serves as a template that I use to kickstart my simple projects. It provides a basic structure and initial configurations ready to use, allowing me to focus on developing the main features of my project without starting from scratch every time I create a new project.
-
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Introduction
-
-Sure, here's a brief introduction to your project:
-
-"This project serves as a foundational template for initiating simple projects. Its primary purpose is to streamline the setup process by offering a pre-configured structure, reducing the initial overhead of setting up a new project from scratch. The goals of this template include improving efficiency in project setup, standardizing project structures, and facilitating faster development cycles by eliminating repetitive setup tasks. It aims to provide a starting point that developers can easily customize to fit the specific requirements of their projects."
+## Tech Stack
+- **Language:** Kotlin
+- **Architecture:** MVVM (Model-View-ViewModel)
+- **Networking:** Retrofit, OkHttp
+- **Local Storage:** Room Database
+- **Dependency Injection:** Hilt
+- **Concurrency:** Kotlin Coroutines
+- **Image Loading:** Glide
+- **Testing:** JUnit, MockK, Turbine, Kotlin Coroutines Test
+- **Debugging:** Chucker
+- **Dependency Versioning:** Version Catalog
+- **Background Processing:** Work Manager
 
 ## Features
+### **Must Have**
+1. **Search Screen**
+    - Users can search for GitHub users.
+    - Uses Retrofit and OkHttp to fetch data from the GitHub API.
+    - Displays search results in a **RecyclerView**.
 
-- MVVM
-- DI
+2. **User List Screen**
+    - Displays a list of GitHub users with their usernames and avatars.
+    - Uses **Glide** for image loading.
 
-## Installation
+3. **User Detail Screen**
+    - Displays detailed information about a selected user.
+    - Includes **username, avatar, bio, and other relevant details**.
 
-Just pull this project
+4. **Local Data Persistence**
+    - Uses **Room** for local storage to persist GitHub users.
+    - Implements **data caching and retrieval**.
 
+5. **Clean Architecture**
+    - Follows the **MVVM pattern**.
+    - Separates concerns into **Domain, Data, and Presentation layers**.
+    - Uses **Hilt** for dependency injection.
 
-## Usage
+6. **Concurrency**
+    - Uses **Kotlin Coroutines** for asynchronous operations.
+    - Utilizes **Jetpack libraries** (LiveData, ViewModel) to manage UI-related data.
 
-Just use it 
+7. **Git History**
+    - Maintains a **clean and descriptive Git history**.
 
+### **Nice to Have**
+1. **Unit Testing & UI Testing**
+    - Implements unit tests and UI tests using **JUnit, Espresso, and Mockito**.
 
-## Contributing
+2. **Debugging Support**
+    - Integrates **Chucker** for API request/response debugging.
 
-```markdown
-# Contributing
+3. **Dependency Versioning**
+    - Uses **Version Catalog** for managing dependencies.
 
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature-name`)
-3. Make your changes
-4. Commit your changes (`git commit -am 'Add new feature'`)
-5. Push to the branch (`git push origin feature-name`)
-6. Create a new Pull Request
-```
+4. **Background Processing**
+    - Implements **Work Manager** for handling background tasks.
 
-## License
+5. **JSON Parsing**
+    - Uses **Moshi** for JSON parsing.
 
-Wisnu Andrian - Android Developer
+## Installation & Setup
+### **Prerequisites**
+- Android Studio (latest version recommended)
+- Git and GitHub account
+
+### **Steps to Build & Run the Project**
+1. **Clone the repository**:
+   ```sh
+   git clone https://github.com/Envy-7z/Githubsearch-Wisnu
+   ```
+
+2. **Open the project in Android Studio**.
+3. **Build and Run the app**:
+    - Connect a physical device or use an emulator.
+    - Click on "Run" in Android Studio.
+
+## Architectural Decisions
+- **MVVM (Model-View-ViewModel)** was chosen for better separation of concerns and testability.
+- **Hilt** for dependency injection to improve modularity.
+- **Room** for local persistence to enhance offline capabilities.
+- **Kotlin Coroutines** for better async handling.
+
+## Challenges & Improvements
+- **API Rate Limiting:** Implemented caching using Room to reduce API calls.
+- **Error Handling:** Implemented proper exception handling and user-friendly error messages.
 ---
+### 🔥 Happy Coding & Good Luck! 🚀
 
-Feel free to customize this template according to the specifics of your project. Adding more detailed information can make your README more helpful for users and contributors.
