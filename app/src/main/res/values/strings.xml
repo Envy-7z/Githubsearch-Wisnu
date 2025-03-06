@@ -9,4 +9,5 @@
     <string name="label_empty_data">No News Found</string>
     <string name="label_error_data">Something Went Wrong</string>
     <string name="retry">Retry</string>
+    <string name="username">Username</string>
 </resources>

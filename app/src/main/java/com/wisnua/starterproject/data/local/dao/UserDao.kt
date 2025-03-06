@@ -14,7 +14,7 @@ interface UserDao {
     suspend fun insertUser(user: UserEntity)
 
     @Query("SELECT * FROM users WHERE id = :userId")
-    suspend fun getUserById(userId: Int): Flow<UserEntity?>
+    fun getUserById(userId: Int): Flow<UserEntity?>
 
     @Query("DELETE FROM users")
     suspend fun deleteAllUsers()
