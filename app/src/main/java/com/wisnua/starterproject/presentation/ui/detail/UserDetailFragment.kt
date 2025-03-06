@@ -42,6 +42,7 @@ class UserDetailFragment : Fragment() {
 
         val username = args.username
         viewModel.getUserDetail(username)
+        viewModel.getUserRepos(username)
     }
 
     private fun setupRecyclerView() {
