@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/searchFragment">
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.wisnua.starterproject.presentation.ui.search.SearchFragment"
+        android:label="Search Users" >
+        <action
+            android:id="@+id/action_searchFragment_to_detailFragment"
+            app:destination="@id/userDetailFragment">
+            <argument
+                android:name="username"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/userDetailFragment"
+        android:name="com.wisnua.starterproject.presentation.ui.detail.UserDetailFragment"
+        android:label="User Detail">
+        <argument
+            android:name="username"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
+
+</navigation>

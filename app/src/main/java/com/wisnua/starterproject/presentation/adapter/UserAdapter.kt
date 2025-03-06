@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.wisnua.starterproject.databinding.ContentUserBinding
 import com.wisnua.starterproject.domain.model.UserItem
 
-class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class UserAdapter(private val onItemClick: (UserItem) -> Unit) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     private val userList = mutableListOf<UserItem>()
 
@@ -25,6 +25,11 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
             Glide.with(binding.root)
                 .load(user.avatarUrl)
                 .into(binding.avatarImageView)
+
+            // Set click listener
+            binding.root.setOnClickListener {
+                onItemClick(user)
+            }
         }
     }
 

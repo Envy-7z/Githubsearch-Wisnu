@@ -11,10 +11,10 @@ import kotlinx.coroutines.flow.Flow
 interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertUser(user: UserEntity)
+    suspend fun insertUsers(users: List<UserEntity>) // Simpan banyak user
 
-    @Query("SELECT * FROM users WHERE id = :userId")
-    fun getUserById(userId: Int): Flow<UserEntity?>
+    @Query("SELECT * FROM users")
+    fun getAllUsers(): Flow<List<UserEntity>> // Ambil semua user dari local DB
 
     @Query("DELETE FROM users")
     suspend fun deleteAllUsers()

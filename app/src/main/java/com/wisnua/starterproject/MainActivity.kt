@@ -1,68 +1,36 @@
 package com.wisnua.starterproject
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.wisnua.starterproject.databinding.ActivityMainBinding
-import com.wisnua.starterproject.presentation.adapter.UserAdapter
-import com.wisnua.starterproject.presentation.viewModel.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel: SearchViewModel by viewModels()
-    private lateinit var adapter: UserAdapter
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupRecyclerView()
-        observeViewModel()
+        setSupportActionBar(binding.toolbar)
 
-        binding.searchButton.setOnClickListener {
-            val query = binding.searchEditText.text.toString()
-            if (query.isNotEmpty()) {
-                viewModel.searchUsers(query)
-            }
-        }
+        // Setup NavController
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+
+        // Setup ActionBar with NavController
+        setupActionBarWithNavController(navController)
     }
 
-    private fun setupRecyclerView() {
-        adapter = UserAdapter()
-        binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = this@MainActivity.adapter
-        }
-    }
-
-    private fun observeViewModel() {
-        lifecycleScope.launchWhenStarted {
-            viewModel.searchResults.collectLatest { users ->
-                adapter.submitList(users)
-            }
-        }
-
-        lifecycleScope.launchWhenStarted {
-            viewModel.isLoading.collectLatest { isLoading ->
-                binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
-            }
-        }
-
-        lifecycleScope.launchWhenStarted {
-            viewModel.errorMessage.collectLatest { error ->
-                error?.let {
-                    Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

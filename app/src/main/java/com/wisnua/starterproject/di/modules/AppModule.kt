@@ -24,7 +24,7 @@ import javax.inject.Singleton
 object AppModule {
 
     private const val BASE_URL = "https://api.github.com/"
-    private const val API_KEY = "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"
+    private const val API_KEY = "Bearer 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"
 
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
