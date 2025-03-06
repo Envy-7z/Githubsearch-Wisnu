@@ -1,11 +1,10 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    id("org.jetbrains.kotlin.kapt")
+    alias(libs.plugins.hilt.android)
     id("kotlin-parcelize")
-    id("androidx.navigation.safeargs.kotlin")
-
+    alias(libs.plugins.navigation.safeargs)
 }
 
 android {
@@ -42,55 +41,55 @@ android {
         viewBinding = true
         dataBinding = true
     }
-
 }
 
 dependencies {
+    // AndroidX Core
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.material)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.swiperefreshlayout)
+    implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.fragment)
+    implementation(libs.androidx.activity.latest)
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
-    implementation("androidx.activity:activity:1.10.1")
-    implementation("androidx.fragment:fragment:1.8.6")
+    // Navigation
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
+    implementation(libs.androidx.navigation.compose)
 
-    implementation("androidx.navigation:navigation-fragment-ktx:2.8.8")
-    implementation("androidx.navigation:navigation-ui-ktx:2.8.8")
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.49")
-    implementation("androidx.navigation:navigation-compose:2.7.7")
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
-    implementation("androidx.hilt:hilt-work:1.2.0")
-    implementation("androidx.work:work-runtime-ktx:2.9.0")
-    kapt("com.google.dagger:hilt-compiler:2.49")
-    kapt("androidx.hilt:hilt-compiler:1.2.0")
-    kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0")
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
+    implementation(libs.hilt.work)
+    implementation(libs.work.runtime)
+    kapt(libs.hilt.compiler)
+    kapt(libs.hilt.androidx.compiler)
+    kapt(libs.kotlinx.metadata.jvm)
 
-    //retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    // Retrofit & Networking
+    implementation(libs.retrofit.core)
+    implementation(libs.retrofit.gson)
+    implementation(libs.okhttp.logging)
 
+    // Glide
+    implementation(libs.glide.core)
+    annotationProcessor(libs.glide.compiler)
 
-    //glide
-    implementation("com.github.bumptech.glide:glide:4.15.1")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.15.0")
-
-    //room
-    implementation("androidx.room:room-common:2.6.1")
-    implementation("androidx.activity:activity:1.9.3")
-    implementation("androidx.room:room-ktx:2.6.1")
-    testImplementation("junit:junit:4.13.2")
-    implementation("androidx.room:room-runtime:2.5.0")
-    kapt("androidx.room:room-compiler:2.5.0")
+    // Room
+    implementation(libs.room.common)
+    implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
+    kapt(libs.room.compiler)
 
     // Chucker
-    implementation("com.github.chuckerteam.chucker:library:4.0.0")
+    implementation(libs.chucker)
 
+    // Testing
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.junit)
+    androidTestImplementation(libs.androidx.test.espresso)
 }

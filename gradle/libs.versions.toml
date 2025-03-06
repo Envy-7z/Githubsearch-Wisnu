@@ -1,0 +1,110 @@
+[versions]
+# Plugins
+androidGradlePlugin = "8.2.2"
+kotlinVersion = "1.9.22"
+androidLibraryPlugin = "8.2.0"
+hiltAndroidPlugin = "2.49"
+navSafeArgsPlugin = "2.7.5"
+
+# AndroidX
+coreKtx = "1.12.0"
+appcompat = "1.6.1"
+material = "1.11.0"
+constraintLayout = "2.1.4"
+pagingRuntime = "3.2.1"
+swipeRefreshLayout = "1.1.0"
+lifecycle = "2.6.2"
+activity = "1.10.1"
+activityLatest = "1.9.3"
+fragment = "1.8.6"
+navigationKtx = "2.8.8"
+navigationCompose = "2.7.7"
+work = "2.9.0"
+
+# Testing
+junit = "4.13.2"
+espresso = "3.5.1"
+androidxTest = "1.1.5"
+
+# Hilt
+hilt = "2.49"
+hiltCompiler = "1.2.0"
+hiltNavCompose = "1.2.0"
+hiltWork = "1.2.0"
+kotlinxMetadata = "0.5.0"
+
+# Retrofit & Networking
+retrofit = "2.9.0"
+okhttp = "4.10.0"
+
+# Glide
+glide = "4.15.1"
+glideCompiler = "4.15.0"
+
+# Room
+roomCommon = "2.6.1"
+roomRuntime = "2.5.0"
+
+# Chucker
+chucker = "4.0.0"
+
+[libraries]
+# AndroidX Core
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintLayout" }
+androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "pagingRuntime" }
+androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swipeRefreshLayout" }
+androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-activity-latest = { group = "androidx.activity", name = "activity", version.ref = "activityLatest" }
+androidx-fragment = { group = "androidx.fragment", name = "fragment", version.ref = "fragment" }
+
+# Navigation
+androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationKtx" }
+androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationKtx" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+
+# Hilt
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavCompose" }
+hilt-work = { group = "androidx.hilt", name = "hilt-work", version.ref = "hiltWork" }
+hilt-androidx-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltCompiler" }
+kotlinx-metadata-jvm = { group = "org.jetbrains.kotlinx", name = "kotlinx-metadata-jvm", version.ref = "kotlinxMetadata" }
+
+# Work
+work-runtime = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "work" }
+
+# Retrofit & Networking
+retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+
+# Glide
+glide-core = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glideCompiler" }
+
+# Room
+room-common = { group = "androidx.room", name = "room-common", version.ref = "roomCommon" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomCommon" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomRuntime" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomRuntime" }
+
+# Testing
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxTest" }
+androidx-test-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
+
+# Chucker
+chucker = { group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidLibraryPlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlinVersion" }
+kotlin-parcelize = { id = "kotlin-parcelize", version.ref = "kotlinVersion" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+navigation-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navSafeArgsPlugin" }
