@@ -1,9 +1,16 @@
 package com.wisnua.starterproject.di.modules
 
+import android.content.Context
+import androidx.room.Room
+import com.wisnua.starterproject.data.local.AppDatabase
+import com.wisnua.starterproject.data.local.dao.UserDao
 import com.wisnua.starterproject.data.remote.ApiService
+import com.wisnua.starterproject.data.repository.UserRepositoryImpl
+import com.wisnua.starterproject.domain.repository.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -61,9 +68,24 @@ object AppModule {
         return retrofit.create(ApiService::class.java)
     }
 
-//    @Provides
-//    @Singleton
-//    fun provideNewsRepository(apiService: ApiService): NewsRepository {
-//        return NewsRepositoryImpl(apiService)
-//    }
+    @Provides
+    @Singleton
+    fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
+        return Room.databaseBuilder(
+            context,
+            AppDatabase::class.java,
+            "github_users.db"
+        ).build()
+    }
+
+    @Provides
+    fun provideUserDao(database: AppDatabase): UserDao {
+        return database.userDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserRepository(apiService: ApiService, userDao: UserDao): UserRepository {
+        return UserRepositoryImpl(apiService, userDao)
+    }
 }
